@@ -1,0 +1,150 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'barkeep' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose cache add [ 'barkeep', null ]
+5 verbose cache add name=undefined spec="barkeep" args=["barkeep",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'barkeep',
+6 verbose parsed url   path: 'barkeep',
+6 verbose parsed url   href: 'barkeep' }
+7 silly lockFile ced5dd51-barkeep barkeep
+8 verbose lock barkeep /Users/jessicamcelroy/.npm/ced5dd51-barkeep.lock
+9 silly lockFile ced5dd51-barkeep barkeep
+10 silly lockFile ced5dd51-barkeep barkeep
+11 verbose addNamed [ 'barkeep', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile e21a23e0-barkeep barkeep@
+14 verbose lock barkeep@ /Users/jessicamcelroy/.npm/e21a23e0-barkeep.lock
+15 silly addNameRange { name: 'barkeep', range: '*', hasData: false }
+16 verbose request where is /barkeep
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 59fad315fadd4528
+19 verbose url raw /barkeep
+20 verbose url resolving [ 'https://registry.npmjs.org/', './barkeep' ]
+21 verbose url resolved https://registry.npmjs.org/barkeep
+22 verbose request where is https://registry.npmjs.org/barkeep
+23 info trying registry request attempt 1 at 14:39:13
+24 http GET https://registry.npmjs.org/barkeep
+25 http 200 https://registry.npmjs.org/barkeep
+26 silly registry.get cb [ 200,
+26 silly registry.get   { date: 'Fri, 02 Jan 2015 20:39:13 GMT',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"DWSE4ZOBMAQGXSG4RDGD37BAL"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '6910',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     'x-served-by': 'cache-dfw1828-DFW',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1420231153.157542,VS0,VE261',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 silly addNameRange number 2 { name: 'barkeep', range: '*', hasData: true }
+28 silly addNameRange versions [ 'barkeep', [ '0.1.0', '0.2.0', '0.2.1', '0.3.0' ] ]
+29 verbose addNamed [ 'barkeep', '0.3.0' ]
+30 verbose addNamed [ '0.3.0', '0.3.0' ]
+31 silly lockFile f8331ba9-barkeep-0-3-0 barkeep@0.3.0
+32 verbose lock barkeep@0.3.0 /Users/jessicamcelroy/.npm/f8331ba9-barkeep-0-3-0.lock
+33 silly lockFile e3b75b98-js-org-barkeep-barkeep-0-3-0-tgz https://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz
+34 verbose lock https://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz /Users/jessicamcelroy/.npm/e3b75b98-js-org-barkeep-barkeep-0-3-0-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz',
+35 verbose addRemoteTarball   '7283f46a7aee1d89be0b2e64b4a8d09074763fc2' ]
+36 info retry fetch attempt 1 at 14:39:14
+37 verbose fetch to= /var/folders/2l/9s9_3qs957bcry3hvz0_zy2m0000gn/T/npm-26242-_9rgYYfm/registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz
+38 http GET https://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz
+39 http 200 https://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz
+40 silly lockFile e3b75b98-js-org-barkeep-barkeep-0-3-0-tgz https://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz
+41 silly lockFile e3b75b98-js-org-barkeep-barkeep-0-3-0-tgz https://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz
+42 silly lockFile f8331ba9-barkeep-0-3-0 barkeep@0.3.0
+43 silly lockFile f8331ba9-barkeep-0-3-0 barkeep@0.3.0
+44 silly lockFile e21a23e0-barkeep barkeep@
+45 silly lockFile e21a23e0-barkeep barkeep@
+46 silly resolved [ { name: 'barkeep',
+46 silly resolved     version: '0.3.0',
+46 silly resolved     description: 'Serve the contents of a directory and livereload those that change.',
+46 silly resolved     main: 'index.js',
+46 silly resolved     bin: { barkeep: './bin/barkeep' },
+46 silly resolved     preferGlobal: true,
+46 silly resolved     author:
+46 silly resolved      { name: 'Jeremy Morrell',
+46 silly resolved        email: 'morrell.jeremy@gmail.com',
+46 silly resolved        url: 'http://rathercurio.us/' },
+46 silly resolved     license: 'MIT',
+46 silly resolved     keywords: [ 'live', 'reload', 'livereload', 'server', 'static' ],
+46 silly resolved     homepage: 'https://github.com/jmorrell/barkeep',
+46 silly resolved     repository: { type: 'git', url: 'https://github.com/jmorrell/barkeep.git' },
+46 silly resolved     dependencies:
+46 silly resolved      { gaze: '~0.5.1',
+46 silly resolved        express: '~3.5.1',
+46 silly resolved        open: '0.0.4',
+46 silly resolved        cors: '~2.2.0',
+46 silly resolved        tamper: '~0.1.0',
+46 silly resolved        'tiny-lr': '0.0.5',
+46 silly resolved        commander: '~2.2.0',
+46 silly resolved        address: '0.0.3',
+46 silly resolved        chalk: '~0.4.0' },
+46 silly resolved     gitHead: '5ca4d08db489fd9dabf56cb9881db2f7d7804da3',
+46 silly resolved     bugs: { url: 'https://github.com/jmorrell/barkeep/issues' },
+46 silly resolved     _id: 'barkeep@0.3.0',
+46 silly resolved     scripts: {},
+46 silly resolved     _shasum: '7283f46a7aee1d89be0b2e64b4a8d09074763fc2',
+46 silly resolved     _from: 'barkeep@',
+46 silly resolved     _npmVersion: '1.4.15',
+46 silly resolved     _npmUser: { name: 'jmorrell', email: 'morrell.jeremy@gmail.com' },
+46 silly resolved     maintainers: [ [Object] ],
+46 silly resolved     dist:
+46 silly resolved      { shasum: '7283f46a7aee1d89be0b2e64b4a8d09074763fc2',
+46 silly resolved        tarball: 'http://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz' },
+46 silly resolved     directories: {},
+46 silly resolved     _resolved: 'https://registry.npmjs.org/barkeep/-/barkeep-0.3.0.tgz' } ]
+47 info install barkeep@0.3.0 into /usr/local/lib
+48 info installOne barkeep@0.3.0
+49 verbose lib/node_modules/barkeep unbuild
+50 verbose tar unpack /Users/jessicamcelroy/.npm/barkeep/0.3.0/package.tgz
+51 silly lockFile 4a179364-r-local-lib-node-modules-barkeep tar:///usr/local/lib/node_modules/barkeep
+52 verbose lock tar:///usr/local/lib/node_modules/barkeep /Users/jessicamcelroy/.npm/4a179364-r-local-lib-node-modules-barkeep.lock
+53 silly lockFile a53bc457-oy-npm-barkeep-0-3-0-package-tgz tar:///Users/jessicamcelroy/.npm/barkeep/0.3.0/package.tgz
+54 verbose lock tar:///Users/jessicamcelroy/.npm/barkeep/0.3.0/package.tgz /Users/jessicamcelroy/.npm/a53bc457-oy-npm-barkeep-0-3-0-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/barkeep'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/barkeep']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/barkeep',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/barkeep',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 14.0.0
+59 error command "node" "/usr/local/bin/npm" "install" "-g" "barkeep"
+60 error cwd /Users/jessicamcelroy/Desktop/SameGame
+61 error node -v v0.10.33
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/barkeep
+64 error fstream_path /usr/local/lib/node_modules/barkeep
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/barkeep'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]

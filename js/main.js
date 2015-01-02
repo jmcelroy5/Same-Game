@@ -88,14 +88,14 @@ Game.prototype.moveDown = function(){
 	console.log("finished moving down");
 };
 
-var GamePiece = function(x,y,color){
+var GamePiece = function(y,x,color){
 	var $piece = $("<div></div>");
 	$piece.addClass("piece");
 	$piece.css("backgroundColor", color);
 	$piece.attr("data-x", x);
 	$piece.attr("data-y", y);
 	$piece.on("click", function() {
-		game.floodDelete(x,y,color,0);
+		game.floodDelete(y,x,color,0);
 		game.moveDown();
 		game.render();
 	});

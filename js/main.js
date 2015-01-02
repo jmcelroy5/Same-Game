@@ -49,15 +49,16 @@ var Game = function(el){
 Game.prototype.floodDelete = function (y,x,color,replacement){
 	// Takes (x,y) coords and color of clicked element and
 	// recursively replaces surrounding elements of same color
-	console.log("comparing (", y, ",", x, ") with ", color);
 	if (this.board[y][x] != color){
 		return;
 	}
 	this.board[y][x] = replacement;
 	if (y > 0) {
+		// check north
 		this.floodDelete(y-1, x, color, replacement);
 	}
 	if (y < this.rows - 1) {
+
 		this.floodDelete(y+1, x, color, replacement);
 	}
 	if (x > 0) {
@@ -71,17 +72,20 @@ Game.prototype.floodDelete = function (y,x,color,replacement){
 Game.prototype.moveDown = function(){
 	for (var y = 0; y < this.rows - 1; y++){
 		for (var x = 0; x < this.columns; x++){
-			var color = this.board[y][x];
-			var idx = y+1;
-			var oneBelow = this.board[y][idx];
-			// console.log("y: ", y, "idx below: ", idx);
-			if (this.board[y][x] && !oneBelow){
-				while (!oneBelow && idx < this.rows - 1){
-					idx ++;
-					oneBelow = this.board[idx][y];
+			if (this.board[y][x] !== 0){
+				var color = this.board[y][x];
+				var idx = y+1;
+				console.log("looking at (y,x):",y,x);
+				console.log("color is ", color);
+				var oneBelow = this.board[idx][x];
+				if (!oneBelow){
+					while (!oneBelow && idx < this.rows - 1){
+						idx ++;
+						oneBelow = this.board[idx][x];
+					}
+					this.board[y][x] = 0;
+					this.board[idx - 1][x] = color;
 				}
-				this.board[y][x] = null;
-				this.board[idx - 1][x] = color;
 			}
 		}
 	}

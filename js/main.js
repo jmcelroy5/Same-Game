@@ -4,6 +4,8 @@ var Game = function(el){
 	this.columns = 0;
 	this.board = [];
 	this.colors = ["green","blue","pink","purple"];
+	this.counter = 0;
+	this.holes = 0;
 
 	this.init = function(rows,cols){
 		// Generate a matrix of n columns and n rows
@@ -19,7 +21,6 @@ var Game = function(el){
 	};
 
 	this.render = function(){
-		console.log("render called..");
 		// render circles according to colors in board
 		this.el.empty();
 		for (var x = 0; x < this.rows; x++){
@@ -50,46 +51,58 @@ Game.prototype.floodDelete = function (y,x,color,replacement){
 	// Takes (x,y) coords and color of clicked element and
 	// recursively replaces surrounding elements of same color
 	if (this.board[y][x] != color){
+		// check south to see if a hole has been made
+		if (y < this.rows - 1 && this.board[y][x] && !this.board[y+1][x]) {
+			game.holes += 1;
+		}
 		return;
 	}
 	this.board[y][x] = replacement;
+	this.counter += 1;
 	if (y > 0) {
 		// check north
 		this.floodDelete(y-1, x, color, replacement);
 	}
 	if (y < this.rows - 1) {
-
+		// check south
 		this.floodDelete(y+1, x, color, replacement);
 	}
 	if (x > 0) {
+		// check west
 		this.floodDelete(y, x-1, color, replacement);
 	}
 	if (x < this.columns - 1) {
+		// check east
 		this.floodDelete(y, x+1, color, replacement);
 	}
 };
 
 Game.prototype.moveDown = function(){
-	for (var y = 0; y < this.rows - 1; y++){
+
+	var holes = this.holes;
+	while (holes > 0){
 		for (var x = 0; x < this.columns; x++){
-			if (this.board[y][x] !== 0){
-				var color = this.board[y][x];
-				var idx = y+1;
-				console.log("looking at (y,x):",y,x);
-				console.log("color is ", color);
-				var oneBelow = this.board[idx][x];
-				if (!oneBelow){
-					while (!oneBelow && idx < this.rows - 1){
-						idx ++;
-						oneBelow = this.board[idx][x];
+			for (var y = 0; y < this.rows - 1; y++){
+				if (this.board[y][x] && !this.board[y+1][x]){
+					var items_to_shift_down = [];
+					var idx = y;
+					while (idx >= 0 && this.board[idx][x]){
+						var color = this.board[idx][x];
+						items_to_shift_down.push(color);
+						this.board[idx][x] = 0;
+						idx --;
 					}
-					this.board[y][x] = 0;
-					this.board[idx - 1][x] = color;
+					idx = y+1;
+					for (var i = 0; i < items_to_shift_down.length; i++){
+						this.board[idx][x] = items_to_shift_down[i];
+						idx--;
+					}
+					holes --;
 				}
 			}
 		}
 	}
-	console.log("finished moving down");
+
 };
 
 var GamePiece = function(y,x,color){
@@ -99,7 +112,11 @@ var GamePiece = function(y,x,color){
 	$piece.attr("data-x", x);
 	$piece.attr("data-y", y);
 	$piece.on("click", function() {
+		game.counter = 0;
+		game.holes = 0;
 		game.floodDelete(y,x,color,0);
+		console.log(game.counter, " removed");
+		console.log(game.holes, " holes made");
 		game.moveDown();
 		game.render();
 	});

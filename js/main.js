@@ -1,7 +1,5 @@
 var Game = function(el){
 	this.el = el;
-	this.rows = 0;
-	this.columns = 0;
 	this.board = [];
 	this.colors = ["green","blue","pink","purple"];
 	this.counter = 0;
@@ -12,6 +10,8 @@ var Game = function(el){
 		// and fill each spot with a random color
 		this.rows = rows;
 		this.columns = cols;
+		this.height = rows - 1;
+		this.width = cols - 1;
 		for (var x = 0; x < this.rows; x++){
 			this.board.push([]);
 			for (var y = 0; y < this.columns; y++){
@@ -83,18 +83,22 @@ Game.prototype.moveDown = function(){
 	while (holes > 0){
 		for (var x = 0; x < this.columns; x++){
 			for (var y = 0; y < this.rows - 1; y++){
+				// check below for a hole
 				if (this.board[y][x] && !this.board[y+1][x]){
-					var items_to_shift_down = [];
+					var itemsToShiftDown = [];
 					var idx = y;
 					while (idx >= 0 && this.board[idx][x]){
+						// move up the column, adding colors to array
 						var color = this.board[idx][x];
-						items_to_shift_down.push(color);
+						itemsToShiftDown.push(color);
 						this.board[idx][x] = 0;
 						idx --;
 					}
+					// start at the hole
 					idx = y+1;
-					for (var i = 0; i < items_to_shift_down.length; i++){
-						this.board[idx][x] = items_to_shift_down[i];
+					// move back up the column, assigning colors to the open spaces 
+					for (var i = 0; i < itemsToShiftDown.length; i++){
+						this.board[idx][x] = itemsToShiftDown[i];
 						idx--;
 					}
 					holes --;
@@ -104,6 +108,24 @@ Game.prototype.moveDown = function(){
 	}
 
 };
+
+Game.prototype.moveOver = function(){
+	// check the bottom row for empty spots
+	var lastRow = this.board[this.rows-1];
+	var emptyCol = lastRow.indexOf(0);
+	if (emptyCol > -1){
+		for (var x = emptyCol + 1; x < this.columns; x++){
+			for (var y = 0; y < this.rows; y++){
+				var current = this.board[y][x]; // get the color
+				this.board[y][x] = 0; // clear it
+				this.board[y][x-1] = current; // shift left
+			}
+		}
+	}
+
+};
+
+// TODO: Scoreboard
 
 var GamePiece = function(y,x,color){
 	var $piece = $("<div></div>");
@@ -115,9 +137,8 @@ var GamePiece = function(y,x,color){
 		game.counter = 0;
 		game.holes = 0;
 		game.floodDelete(y,x,color,0);
-		console.log(game.counter, " removed");
-		console.log(game.holes, " holes made");
 		game.moveDown();
+		game.moveOver();
 		game.render();
 	});
 	return $piece;
